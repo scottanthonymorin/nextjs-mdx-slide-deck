@@ -1,0 +1,115 @@
+// src/components/CodeBlock.js
+import React from "react";
+import { LiveProvider, LiveEditor } from "react-live";
+
+const CodeSnippet = ({ children }) => {
+  return (
+    <LiveProvider
+      noInline
+      code={children.trim()}
+      mountStylesheet={true}
+      theme={syntaxTheme}
+    >
+      <LiveEditor />
+    </LiveProvider>
+  );
+};
+
+const syntaxTheme = {
+  plain: {
+    color: "#2A2A2A",
+    backgroundColor: "#eaeaea",
+    borderRadius: 6,
+  },
+  styles: [
+    {
+      types: ["prolog", "comment", "doctype", "cdata"],
+      style: {
+        color: "#B0BEC5",
+      },
+    },
+    {
+      types: ["property", "tag", "deleted", "constant", "symbol"],
+      style: { color: "#f40088" },
+    },
+    {
+      types: ["boolean", "number"],
+      style: { color: "#FF9100" },
+    },
+    {
+      types: ["attr-name", "tag"],
+      style: { fontWeight: 700 },
+    },
+    {
+      types: ["string", "attr-value"],
+      style: {
+        color: "#78909C",
+      },
+    },
+    {
+      types: [
+        "operator",
+        "entity",
+        "url",
+        "string",
+        "variable",
+        "language-css",
+        "keyword",
+      ],
+      style: {
+        color: "#651fff",
+      },
+    },
+    {
+      types: [
+        "selector",
+        "attr-name",
+        "char",
+        "builtin",
+        "insert",
+        "script-punctuation",
+      ],
+      style: {
+        color: "#AA00FF",
+      },
+    },
+    {
+      types: ["deleted"],
+      style: {
+        color: "rgb(255, 85, 85)",
+      },
+    },
+    {
+      types: ["italic"],
+      style: {
+        fontStyle: "italic",
+      },
+    },
+    {
+      types: ["important", "bold"],
+      style: {
+        fontWeight: "bold",
+      },
+    },
+    {
+      types: ["regex", "important"],
+      style: {
+        color: "#ffd700",
+      },
+    },
+    {
+      types: ["atrule", "function"],
+      style: {
+        color: "#3D5AFE",
+      },
+    },
+    {
+      types: ["punctuation", "symbol"],
+      style: {
+        opacity: "0.7",
+      },
+    },
+  ],
+};
+
+export default CodeSnippet;
